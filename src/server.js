@@ -6,7 +6,7 @@ import { notFoundMiddleware } from './middlewares/notFoundMiddleware.js'
 import { errorHandlerMiddleware } from './middlewares/errorHandlerMiddleware.js'
 import contactsRouter from './routers/contactsRouter.js'
 
-const PORT = Number(getEnvVar('PORT', 3000))
+const PORT = Number(getEnvVar('PORT', 3002))
 
 export const startServer = () => {
     const app = express()
