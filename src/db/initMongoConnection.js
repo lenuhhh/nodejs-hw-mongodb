@@ -14,7 +14,7 @@ export const initMongoConnection = async () => {
 
         const db = getEnvVar('MONGODB_DB')
 
-        await mongoose.connect(`mongodb+srv://${user}:${password}@${url}/${db}?retryWrites=true&w=majority`)
+        await mongoose.connect(`mongodb+srv://alexander:82NXfZsmMD6yL5Ms@cluster0.46t38.mongodb.net/contacts?retryWrites=true&w=majority&appName=Cluster0`)
 
         console.log('Mongo connection successfully established')   
     }
