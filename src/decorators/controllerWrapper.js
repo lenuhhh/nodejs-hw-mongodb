@@ -1,14 +1,19 @@
-export const controllerWrapper = ctrl => {
-    const func = async (req, res, next) => {
-        try {
+import mongoose from "mongoose"
+import { getEnvVar } from "../utils/getEnvVar.js"
 
-            await ctrl (req, res, next)
-        }
+export const initMongoConnection = async () => {
+    try {
+        const user = getEnvVar('MONGODB_USER')
+        const password = getEnvVar('MONGODB_PASSWORD')
+        const url = getEnvVar('MONGODB_URL')
+        const db = getEnvVar('MONGODB_DB')
 
-        catch (e) {
-            next(e)
-        }
-        
+        await mongoose.connect(`mongodb+srv://${user}:${password}@${url}/${db}?retryWrites=true&w=majority`)
+
+        console.log('Mongo connection successfully established')   
     }
-    return func
+    catch (e) {
+        console.log('Error while setting up mongo connection', e)
+        throw e
+    }
 }
